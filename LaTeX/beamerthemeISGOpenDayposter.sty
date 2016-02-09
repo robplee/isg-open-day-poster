@@ -1,0 +1,294 @@
+\ProvidesPackage{beamerthemeISGOpenDayposter} 
+% this style was created by Robert Lee based on the ISG poster theme produced by Gordon Proctor
+% if you find a problem then please let me know
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{ragged2e}
+\RequirePackage{setspace}
+\RequirePackage{ifthen}
+\RequirePackage[framemethod=default]{mdframed} %used for creating the frames for block titles,figures and the abstract
+\selectcolormodel{RGB}
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Colours
+
+%There is a lot of legacy stuff here from the old theme
+
+\definecolor{sccbackgroundgrey}{RGB}{231,231,231}
+\definecolor{sccblue}{RGB}{0,62,128}
+\definecolor{sccorange}{RGB}{208,166,54}
+
+\definecolor{rhulorange}{RGB}{235, 100, 30}		% #EB641E
+\definecolor{rhulgrey}{RGB}  {32, 42, 48}		% #202A30
+\definecolor{rhulgrey1}{RGB} {32, 42, 48}
+\definecolor{rhulgrey2}{RGB} {54, 63, 69}
+\definecolor{rhulgrey3}{RGB} {77, 85, 89}
+\definecolor{rhulgrey4}{RGB} {99, 106,110}
+\definecolor{rhulgrey5}{RGB} {121,127,131}
+\definecolor{rhulgrey6}{RGB} {144,149,152}
+\definecolor{rhulgrey7}{RGB} {166,170,172}
+\definecolor{rhulgrey8}{RGB} {188,191,193}
+\definecolor{rhulgrey9}{RGB} {210,212,214}
+\definecolor{rhulgrey10}{RGB}{233,234,234}
+\definecolor{rhullightgrey}{RGB}{102, 102, 102}
+\definecolor{rhulred}{RGB}{215,45,45}	% #D72D2D
+\definecolor{rhulyellow}{RGB}{245,170,10}	% #F5AF0A
+\definecolor{rhulpink}{RGB}{215,11,144}		% #D70B90
+\definecolor{rhullime}{RGB}{148,154,0}		% #949A00
+\definecolor{rhulgreen}{RGB}{0,166,158}	% #00A69E
+\definecolor{rhulsky}{RGB}{0,158,215}	% #009ED7
+\definecolor{rhulblue}{RGB}{0,115,207}		% #0073CF
+\definecolor{rhulpurple}{RGB}{152,87,174}		% #9857AE
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Set Beamer colours/fonts
+\setbeamercolor{headline}{fg=sccblue,bg=sccbackgroundgrey}
+\setbeamercolor{abstractbox}{fg=sccblue,bg=white}
+\setbeamercolor{orangeouter}{fg=sccorange,bg=sccorange}
+\setbeamercolor{footline}{fg=rhulred, bg=rhulgreen}   %doesn't seem to do anything
+\setbeamerfont{footline}{size=\small}
+\setbeamercolor{separation line}{bg=rhulorange}
+\setbeamercolor{title in headline}{fg=sccblue}
+\setbeamercolor{author in headline}{fg=sccblue}
+\setbeamercolor{institute in headline}{fg=sccblue}
+
+\setbeamercolor{framesubtitle}{fg=rhulorange, bg=rhulgrey}
+\setbeamercolor{author in head/foot}{fg=sccblue, bg=sccbackgroundgrey}
+\setbeamercolor{title in head/foot}{fg=sccblue, bg=sccbackgroundgrey}
+
+%\setbeamercolor*{normal text}{fg=black, bg=rhulgrey6}
+\setbeamercolor*{normal text}{fg=sccblue, bg=sccbackgroundgrey}
+\setbeamercolor*{block body}{fg=sccblue, bg=sccbackgroundgrey}
+\setbeamerfont{block body}{size=\fontsize{20}{24}}
+\setbeamercolor{block title}{fg=white, bg=sccblue}
+%\setbeamerfont{block title}{size=\Large,series=\bf} %doesn't seem to do anything
+
+\setbeamercolor{upper separation line head}{fg=rhulorange, bg=rhulorange}
+\setbeamercolor{upper separation line foot}{fg=sccorange, bg=sccorange}
+
+\setbeamercolor*{example body}{fg=rhulgrey8,bg=black}
+\setbeamercolor*{example text}{fg=rhulgrey8,bg=black}
+\setbeamercolor*{example title}{bg=rhulorange,fg=rhulgrey}
+
+ \setbeamercolor{caption name}{fg=sccblue}
+
+%\setbeamercolor{alerted text}{fg=rhulred}
+
+%\setbeamercolor{example text}{fg=rhulorange}
+
+%sets bullet colour
+\setbeamercolor{structure}{fg=sccblue}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Blocks
+\newmdenv[linecolor=sccorange,backgroundcolor=sccblue,linewidth=1.5bp]{myblockframe}
+
+\setbeamertemplate{block begin}{
+\justifying
+\begin{myblockframe}%
+  \begin{beamercolorbox}[leftskip=0.1ex, rightskip=0.1ex, ht = 1.3\baselineskip]{block title}%
+	\fontsize{36pt}{43.2pt}\selectfont%\large
+	\insertblocktitle%
+  \end{beamercolorbox}%
+  \end{myblockframe}%
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[leftskip=1em,colsep*=.75ex,sep=0.5ex,vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+  }
+  \setbeamertemplate{block end}{
+  \end{beamercolorbox}
+}
+%environments for blocks in left, centre or right columns
+\newenvironment{leftColumnBlock}[1]
+	{\begin{block}{\raggedleft#1}}
+	{\end{block}}
+
+\newenvironment{centreColumnBlock}[1]
+	{\begin{block}{\centering#1}}
+	{\end{block}}
+
+\newenvironment{rightColumnBlock}[1]
+	{\begin{block}{\raggedright#1}}
+	{\end{block}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand*{\abstract}[1]{\gdef\@abstract{#1}}
+\newcommand*{\problemDescription}[1]{\gdef\@problemDescription{#1}}
+\newcommand*{\solutionDescription}[1]{\gdef\@solutionDescription{#1}}
+\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}}
+\newcommand*{\authoremail}[1]{\gdef\@authoremail{#1}}
+
+\supervisor{No Supervisor Provided}
+\authoremail{nope@nope.com}
+\abstract{Hendrerit, eum nostrud, quis eu enim nonummy ea capto natu feugiat sino, magna. Mara wisi zelus caecus, nunc tristique.Hendrerit, eum nostrud, quis eu}
+\problemDescription{Hendrerit, eum nostrud, quis eu enim nonummy ea capto natu feugiat sino, magna. Mara wisi zelus caecus, nunc tristique.Hendrerit, eum nostrud, quis eu}
+\solutionDescription{Hendrerit, eum nostrud, quis eu enim nonummy ea capto natu feugiat sino, magna. Mara wisi zelus caecus, nunc tristique.Hendrerit, eum nostrud, quis eu}
+
+\newmdenv[linecolor=sccorange,backgroundcolor=white,linewidth=1.5bp]{myabstractframe}
+%\newmdenv[linecolor=sccorange,backgroundcolor=white,linewidth=1.5pt]{myfigureframe}
+
+\let\oldfigure\figure
+\let\oldendfigure\endfigure
+
+\renewenvironment{figure}
+	{\begin{myfigureframe}
+	\oldfigure
+	}
+	{
+	\oldendfigure
+	\end{myfigureframe}}
+	
+\newenvironment{figureNoFrame}
+	{\oldfigure}
+	{\oldendfigure}
+
+\newenvironment{myfigureframe}{\begin{myabstractframe}}{%
+	\end{myabstractframe}\ignorespacesafterend%
+}
+
+\setbeamertemplate{headline}{  
+\normalbaselines
+\leavevmode
+\begin{beamercolorbox}[wd=\paperwidth]{headline}
+\normalbaselines
+	\begin{columns}[T]
+		\begin{column}{.2\paperwidth}
+			\vspace{1.06cm}
+			{\begin{flushright}
+			\includegraphics[width=0.8\textwidth]{graphics/beamer-style/RHUL-Logo-Large}\end{flushright}}
+			\vskip4ex
+		\end{column}
+		
+		\begin{column}{.6\paperwidth}
+			\vspace{1.06cm}
+			\begin{minipage}{\textwidth}
+			
+			{\normalbaselines\linespread{0.8}\begin{center}\usebeamercolor{title in headline}\color{fg}\fontsize{50pt}{60pt}\selectfont\textbf{\inserttitle}\\\end{center}}
+			{\normalbaselines\begin{center}\usebeamercolor{author in headline}\color{fg}\fontsize{35pt}{42pt}\selectfont{\insertauthor}\\\end{center}}
+			\ifthenelse{\equal{No Supervisor Provided}{\@supervisor}}{}{\begin{center}\usebeamercolor{institute in headline}\color{fg}\fontsize{35pt}{42pt}\selectfont{Supervisor: \@supervisor}\end{center}}
+			\end{minipage}
+		\end{column}
+			
+		\begin{column}{.2\paperwidth}
+			\vspace{1.06cm}
+			{\begin{flushleft}
+			\includegraphics[width=0.8\textwidth]{graphics/beamer-style/isg-open-day-logo}\end{flushleft}}
+			\vskip4ex
+		\end{column}
+	\end{columns}
+	\vspace{1.5cm}
+	
+
+	\begin{columns}[c]
+	\normalbaselines
+	\begin{column}{0.5\paperwidth} %abstract Column
+	\normalbaselines
+	\vfill	
+	\centering{}
+	\begin{minipage}{26.9cm}
+	\normalbaselines
+	\vfill
+	\begin{myabstractframe}
+		{\normalbaselines
+		
+		\usebeamerfont{block body}%
+		\vspace{0.5\baselineskip}
+		{\begin{center}\usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{38pt}{42.6pt}\selectfont{ABSTRACT}}\\[2ex]}\end{center}}
+		{\fontsize{24pt}{28.8pt}\selectfont\normalbaselines\justifying\@abstract\\}
+		\vspace{0.5\baselineskip}}
+	\end{myabstractframe}
+	\vfill
+	\end{minipage}
+	\vfill
+	\end{column}
+	
+	\begin{column}{0.5\paperwidth} %problem and solution Column
+		\begin{minipage}{26.9cm}
+		\normalbaselines
+		\begin{beamercolorbox}[wd=\textwidth]{headline}
+			
+			\usebeamerfont{block body}%
+			\vspace{0.5\baselineskip}
+			{\begin{center}\textbf{\fontsize{38pt}{45pt}\selectfont{PROBLEM}}\\\end{center}}
+			{\fontsize{32pt}{38.2pt}\selectfont\parbox{\linewidth}{\@problemDescription}}
+			\vspace{\baselineskip}\\
+			{\begin{center}\textbf{\fontsize{38pt}{45pt}\selectfont{SOLUTION}}\\\end{center}}
+			{\fontsize{32pt}{38.2pt}\selectfont\parbox{\linewidth}{\@solutionDescription}}
+			\vspace{0.5\baselineskip}
+		\end{beamercolorbox}
+		\end{minipage}
+	\end{column}
+	
+	\end{columns}
+	\vfill%{0.75cm}
+\end{beamercolorbox}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+\setbeamertemplate{footline}{
+  \hbox{
+  \begin{beamercolorbox}[wd=0.125\paperwidth]{block body}
+  		\rule{0bp}{3bp}
+	\end{beamercolorbox}
+  \begin{beamercolorbox}[wd=0.75\paperwidth]{upper separation line foot}
+		\rule{0pt}{3bp}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=0.125\paperwidth]{block body}
+  		\rule{0pt}{3bp}
+  \end{beamercolorbox}}
+  \leavevmode%
+  \vskip.5ex
+  \begin{beamercolorbox}[wd=\paperwidth]{author in head/foot}
+	\centering
+		\fontsize{12bp}{14.4bp}\selectfont
+	   Information Security Group Open Day 2016
+  \end{beamercolorbox}
+  \vskip.5ex
+  \begin{beamercolorbox}[wd=\paperwidth]{author in head/foot}
+	\centering
+		\fontsize{12bp}{14.4bp}\selectfont
+	   \url{\@authoremail} \textbf{$\vert$} \url{www.isg.rhul.ac.uk}
+  \end{beamercolorbox}
+  \vskip1.0ex
+  
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Display a grid to help align images ... and it looks nice with this color scheme
+%\beamertemplategridbackground[1cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<all>
+
+
+\setbeamertemplate{itemize items}[circle]
+
+% equal font sizes for all levels in enumerate.  It is expected that enumerate will be used in a block so sizes are set accordingly
+\setbeamerfont{itemize/enumerate body}{size=\usebeamerfont{block body}}
+\setbeamerfont{itemize/enumerate subbody}{size=\usebeamerfont{block body}}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\usebeamerfont{block body}}
+
+\setbeamerfont{caption}{size=\fontsize{18}{21.6}}
+
+%Bibliography things
+\setbeamercolor*{bibliography entry title}{fg=sccblue} % Use only black when writing the references
+\setbeamercolor*{bibliography entry author}{fg=sccblue}
+\setbeamercolor*{bibliography entry location}{fg=sccblue}
+\setbeamercolor*{bibliography entry note}{fg=sccblue}
+\setbeamertemplate{bibliography item}{\insertbiblabel} % give the references numbers (I hope!)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-master: "poster-surf"
+%%% End: 
