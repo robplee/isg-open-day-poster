@@ -1,0 +1,210 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+\mode<presentation>{\usetheme{ISGOpenDayposter}}
+
+\usepackage[orientation=portrait,size=a1, scale=1]{beamerposter}
+\usepackage{grffile} %allows latex to handle more possible file names for graphics
+\usepackage{amsmath,amsthm, amssymb, latexsym}
+\usepackage{comment} 
+\usepackage{graphicx}
+
+
+\nonfrenchspacing
+\setbeamertemplate{caption}[numbered]
+
+\newcommand{\correctitemizeindent}{\setlength{\leftmargini}{2.5em}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\title{Example ISG Open Day Theme}
+\author{John Smith}
+\authoremail{john.smith@qwerty.com}
+\supervisor{Prof J. Bloggs}
+\abstract{This is an example poster using the ISG open day beamer theme.  The \texttt{.tex} file should be a good guide to help people to use the theme.  The poster gives some description of the few things that authors will need to be aware of.  Generally it is expected that anyone familiar with \LaTeX\ should be able to use this poster style without difficulty.  I think that the style is fairly stable, however I doubt it's perfect, if you find an error please let me (Rob Lee) know via git or by email.}
+\problemDescription{Deciding on what style to use to create a nice \LaTeX\ poster for the RHUL Information Security Group Open Day.}
+\solutionDescription{Using the beamer style file created for use at the RHUL Information Security Group Open Day.  With this style file you can painlessly create a nice looking poster to present at the open day.  Here is presented an example poster that shows off this style.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\columnheight}
+\setlength{\columnheight}{53.5cm} %seems to require manual tweaking
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\justifying
+\begin{frame}
+  \begin{columns}[T]
+
+%%%% First Column
+	\begin{column}{.32\textwidth}
+		\begin{minipage}[t]{.95\textwidth}
+		\parbox[t][\columnheight]{\textwidth}{	  	
+
+	    \begin{leftColumnBlock}{Overview}
+			%\rightskip=\leftskip
+			Motivation:
+			{\correctitemizeindent
+			\begin{itemize}
+				\item The beamer style file has been designed to be straightforward to use and should be fairly easy for people to use if they are familiar with making posters in Beamer.
+				\item Most of the complexity is hidden in the \texttt{beamerthemeISGOpenDayposter.sty} file.  I don't expect people to need to go in there to change things.
+				\item I am confident that this style file is not without bugs and if you find one please let me know.  If you work out how to fix the problem and tell me that at the same time, that's even better!
+			\end{itemize}}
+		\end{leftColumnBlock}
+
+		\vfill
+
+		\begin{leftColumnBlock}{Lorem Ipsum}
+			\rightskip=\leftskip
+			{\correctitemizeindent
+			\begin{itemize}
+				\item Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				\item Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				\item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				\item Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			\end{itemize}
+			}
+		\end{leftColumnBlock}
+		
+		\vfill
+
+		\begin{leftColumnBlock}{Lorem Ipsum}
+		{
+			\rightskip=\leftskip
+			{\correctitemizeindent
+			\begin{itemize}
+				\item Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				\item Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				\item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				\item Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			\end{itemize}
+			}
+		}	
+		\end{leftColumnBlock}
+			
+		} %end of the parbox
+		\end{minipage}
+	\end{column}
+
+
+		
+%%% Second Column
+	\begin{column}{.32\textwidth}
+		\begin{minipage}[t]{.95\textwidth}
+		\parbox[t][\columnheight]{\textwidth}{	  	
+	  
+		\begin{centreColumnBlock}{Kinds of Block}
+			\rightskip=\leftskip
+			There are four kinds of block which can be used to hold content.		
+			\correctitemizeindent
+			\begin{enumerate}
+				\item \texttt{leftColumnBlock} is used to create blocks that have the title flushed right - these are used in the left column of this poster.
+				\item \texttt{centreColumnBlock} is used to create blocks that have the title centred - these are used in the middle column of this poster.
+				\item \texttt{rightColumnBlock} is used to create blocks that have the title flushed left - these are used in the right column of this poster.
+			\end{enumerate}
+			
+		\end{centreColumnBlock}
+
+		\vfill
+		
+		\begin{centreColumnBlock}{Lorem Ipsum}
+			\rightskip=\leftskip
+			{\correctitemizeindent
+			\begin{itemize}
+				\item Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				\item Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				\item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				\item Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			\end{itemize}
+			}
+		\end{centreColumnBlock}
+
+		\vfill
+
+				
+		\begin{centreColumnBlock}{Lorem Ipsum}
+			\rightskip=\leftskip
+			{\correctitemizeindent
+			\begin{itemize}
+				\item Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				\item Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				\item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				\item Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			\end{itemize}
+			}
+		\end{centreColumnBlock}
+		}
+		\end{minipage}
+	\end{column}
+
+%%% Third Column
+ 	\begin{column}{.32\textwidth}
+		\begin{minipage}[t]{.95\textwidth}
+		\parbox[t][\columnheight]{\textwidth}{	  
+			
+			\begin{rightColumnBlock}{Example Block with a figure}
+				\correctitemizeindent
+				\rightskip=\leftskip
+				\begin{center}
+				\begin{minipage}{0.95\textwidth}
+				\begin{figure} \label{fig:memory-transform}
+					\begin{center}
+						\includegraphics[width=\textwidth]{graphics/jaffa_cake}
+					\end{center}
+				\caption{These make a good thank-you for people who have generously made a beamer theme for all to use\dots}
+				\end{figure}
+				\end{minipage}
+				\end{center}				
+			\end{rightColumnBlock}
+			
+			\vfill
+			
+			\begin{rightColumnBlock}{Lorem Ipsum}
+			\rightskip=\leftskip
+			{\correctitemizeindent
+			\begin{itemize}
+				\item Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				\item Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				\item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				\item Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			\end{itemize}
+			}
+			\end{rightColumnBlock}
+			
+			\vfill
+
+				
+				
+			\begin{rightColumnBlock}{Lorem Ipsum}
+			\rightskip=\leftskip
+			{\correctitemizeindent
+			\begin{itemize}
+				\item Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				\item Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				\item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				\item Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			\end{itemize}
+			}
+			\end{rightColumnBlock}
+			
+			\vfill
+
+        	\begin{rightColumnBlock}{Lorem Ipsum}
+			\rightskip=\leftskip
+			{\correctitemizeindent
+			\begin{itemize}
+				\item Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				\item Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				\item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				\item Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			\end{itemize}
+			}
+			\end{rightColumnBlock}   
+				
+			}
+			\end{minipage}
+		\end{column}
+	
+			\end{columns}
+			
+		
+\end{frame}
+
+\end{document}
